@@ -7,9 +7,10 @@ databases:
 services:
   - type: web
     name: pedido-api
-    runtime: docker
+    env: docker
     plan: free
-    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    dockerfilePath: Dockerfile
     envVars:
       - key: DB_HOST
         fromDatabase:
