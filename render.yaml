@@ -1,3 +1,9 @@
+databases:
+  - name: pedido-db
+    plan: free
+    databaseName: dbpedidos
+    user: dbuser
+
 services:
   - type: web
     name: pedido-api
@@ -8,13 +14,19 @@ services:
       - key: PORT
         value: 8081
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: pedido-db
+          property: connectionURI
+        # Render genera la URL como postgresql://, Spring necesita jdbc:postgresql://
+        # Hay que configurarla manualmente en Environment (ver instrucciones abajo)
       - key: DATABASE_USER
-        sync: false
+        fromDatabase:
+          name: pedido-db
+          property: user
       - key: DATABASE_PASS
-        sync: false
-      - key: DATABASE_DRIVER
-        value: com.mysql.cj.jdbc.Driver
+        fromDatabase:
+          name: pedido-db
+          property: password
       - key: DDL_AUTO
         value: update
       - key: SHOW_SQL
