@@ -16,9 +16,7 @@ services:
       - key: DATABASE_URL
         fromDatabase:
           name: pedido-db
-          property: connectionURI
-        # Render genera la URL como postgresql://, Spring necesita jdbc:postgresql://
-        # Hay que configurarla manualmente en Environment (ver instrucciones abajo)
+          property: connectionString
       - key: DATABASE_USER
         fromDatabase:
           name: pedido-db
