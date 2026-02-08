@@ -1,12 +1,16 @@
+databases:
+  - name: pedido-db
+    plan: free
+    databaseName: pedido
+    user: pedido_user
+
 services:
   - type: web
     name: pedido-api
-    env: docker
+    runtime: docker
     plan: free
-    autoDeploy: true
+    dockerfilePath: ./Dockerfile
     envVars:
-      - key: SPRING_PROFILES_ACTIVE
-        value: prod
       - key: DB_HOST
         fromDatabase:
           name: pedido-db
@@ -28,10 +32,8 @@ services:
           name: pedido-db
           property: password
       - key: PORT
-        value: 10000
+        value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
 
-databases:
-  - name: pedido-db
-    plan: free
-    databaseName: pedido
-    user: pedido_user
+
