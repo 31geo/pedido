@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: pedido-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8081
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_USER
+        sync: false
+      - key: DATABASE_PASS
+        sync: false
+      - key: DATABASE_DRIVER
+        value: com.mysql.cj.jdbc.Driver
+      - key: DDL_AUTO
+        value: update
+      - key: SHOW_SQL
+        value: false
