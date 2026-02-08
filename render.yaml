@@ -2,18 +2,30 @@ services:
   - type: web
     name: pedido-api
     runtime: docker
-    dockerfilePath: ./Dockerfile
     plan: free
+    dockerfilePath: ./Dockerfile
     envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: formulario-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: formulario-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: formulario-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: formulario-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: formulario-db
+          property: password
       - key: PORT
-        value: "8081"
-      - key: DATABASE_URL
-        sync: false
-      - key: DATABASE_USER
-        sync: false
-      - key: DATABASE_PASS
-        sync: false
-      - key: DDL_AUTO
-        value: "update"
-      - key: SHOW_SQL
-        value: "false"
+        value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
