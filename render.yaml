@@ -6,15 +6,25 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: DB_HOST
-        sync: false
+        fromDatabase:
+          name: formulario-db
+          property: host
       - key: DB_PORT
-        sync: false
+        fromDatabase:
+          name: formulario-db
+          property: port
       - key: DB_NAME
-        sync: false
+        fromDatabase:
+          name: formulario-db
+          property: database
       - key: DB_USER
-        sync: false
+        fromDatabase:
+          name: formulario-db
+          property: user
       - key: DB_PASSWORD
-        sync: false
+        fromDatabase:
+          name: formulario-db
+          property: password
       - key: PORT
         value: 8080
       - key: SPRING_PROFILES_ACTIVE
