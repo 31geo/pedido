@@ -6,7 +6,7 @@ services:
     plan: free
     envVars:
       - key: PORT
-        value: 8081
+        value: "8081"
       - key: DATABASE_URL
         sync: false
       - key: DATABASE_USER
@@ -14,6 +14,6 @@ services:
       - key: DATABASE_PASS
         sync: false
       - key: DDL_AUTO
-        value: update
+        value: "update"
       - key: SHOW_SQL
-        value: false
+        value: "false"
