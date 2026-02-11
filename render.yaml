@@ -1,12 +1,12 @@
 databases:
-  - name: pedido-db
+  - name: practica-db
     plan: free
-    databaseName: pedido
-    user: pedido_user
+    databaseName: practica
+    user: practica_user
 
 services:
   - type: web
-    name: pedido-api
+    name: practica-api
     env: docker
     plan: free
     autoDeploy: true
@@ -14,27 +14,25 @@ services:
     envVars:
       - key: DB_HOST
         fromDatabase:
-          name: pedido-db
+          name: practica-db
           property: host
       - key: DB_PORT
         fromDatabase:
-          name: pedido-db
+          name: practica-db
           property: port
       - key: DB_NAME
         fromDatabase:
-          name: pedido-db
+          name: practica-db
           property: database
       - key: DB_USER
         fromDatabase:
-          name: pedido-db
+          name: practica-db
           property: user
       - key: DB_PASSWORD
         fromDatabase:
-          name: pedido-db
+          name: practica-db
           property: password
       - key: PORT
         value: 8080
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-
-
